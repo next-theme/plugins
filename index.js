@@ -40,7 +40,7 @@ const plugins = {
   canvas_ribbon: ['ribbon.js', 'dist/ribbon.min.js']
 };
 
-module.exports = function(hexo) {
+module.exports = function() {
   const vendors = {};
   const generator = [];
   for (const [key, item] of Object.entries(plugins)) {
