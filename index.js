@@ -39,7 +39,7 @@ module.exports = function(hexo, vendors) {
   let generator = [];
   vendors.fontawesome_font = {
     name: '@fortawesome/fontawesome-free',
-    file: 'webfont'
+    file: 'webfonts'
   };
   for (const value of Object.values(vendors)) {
     const { name, file } = value;
