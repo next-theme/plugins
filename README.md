@@ -9,6 +9,26 @@ Plugins for Hexo theme NexT.
 
 ## Installation
 
-``` bash
-$ npm install @next-theme/plugins
+```bash
+npm install @next-theme/plugins
 ```
+
+## Debug
+
+First execute the following command in Hexo site root directory to ensure that the plugin is installed correctly.
+
+```bash
+npm install
+```
+
+If the warning persists, then the solution depends on how you installed NexT.
+
+1. Installed NexT through npm:
+    Make sure the version numbers of `@next-theme/plugins` and `hexo-theme-next` are the same.
+
+1. Installed NexT through git:
+    1. If you are using the latest master branch: **Ignore this warning**.
+    1. If you are using the latest release version:
+        Make sure the version numbers of `@next-theme/plugins` and `hexo-theme-next` are the same.
+
+Feel free to raise new issues you find in this plugin.
