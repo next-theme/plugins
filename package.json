@@ -1,6 +1,6 @@
 {
   "name": "@next-theme/plugins",
-  "version": "0.1.0",
+  "version": "8.0.0-rc.5",
   "description": "Plugins for Hexo theme NexT.",
   "main": "index.js",
   "repository": "https://github.com/next-theme/plugins",
@@ -19,6 +19,7 @@
     "animate.css": "3.1.1",
     "animejs": "3.2.0",
     "disqusjs": "1.3.0",
+    "firebase": "7.17.2",
     "gitalk": "1.6.2",
     "instantsearch.js": "4.7.0",
     "jquery": "3.5.1",
