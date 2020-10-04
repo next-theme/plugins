@@ -24,6 +24,8 @@ if (diff.length > 0) {
   console.log(diff.map(item => '- ' + item).join('\n'));
   console.log('\nThe affected CDN links are listed below.');
   main();
+} else {
+  console.log('No packages are updated in the Pull Request.');
 }
 
 function request(url) {
