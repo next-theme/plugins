@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "decache": "4.6.0",
-    "hexo-theme-next": "8.0.1",
+    "hexo-theme-next": "8.0.2",
     "js-yaml": "3.14.0"
   }
 }
