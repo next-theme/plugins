@@ -46,6 +46,10 @@ module.exports = function(hexo, vendors) {
     name: '@fortawesome/fontawesome-free',
     file: 'webfonts'
   };
+  vendors.katex_font = {
+    name: 'katex',
+    file: 'dist/fonts'
+  };
   for (const value of Object.values(vendors)) {
     const { name, file } = value;
     const { data, error } = readFile(name, file);
