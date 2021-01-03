@@ -6,7 +6,7 @@ const { spawnSync } = require('child_process');
 const decache = require('decache');
 
 const vendorsFile = fs.readFileSync(path.join(path.dirname(require.resolve('hexo-theme-next')), '_vendors.yml'));
-const dependencies = yaml.safeLoad(vendorsFile);
+const dependencies = yaml.load(vendorsFile);
 
 const newPlugins = require('../package.json').dependencies;
 spawnSync('git', ['checkout', 'master']);
