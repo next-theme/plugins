@@ -21,3 +21,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         path: results.txt
+    - run: node test/generator.js > results_vendors.txt
+    - name: comment PR _vendors.yml
+      uses: machine-learning-apps/pr-comment@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        path: results_vendors.txt
