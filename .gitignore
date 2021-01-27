@@ -1,4 +1,6 @@
 results.txt
+_vendors.yml
+.tmp
 .DS_Store
 .idea/
 *.log
