@@ -1,0 +1,10 @@
+results.txt
+_vendors.yml
+.tmp
+.DS_Store
+.idea/
+*.log
+*.iml
+yarn.lock
+package-lock.json
+node_modules/

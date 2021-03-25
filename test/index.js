@@ -4,8 +4,11 @@ const https = require('https');
 const yaml = require('js-yaml');
 const { spawnSync } = require('child_process');
 const decache = require('decache');
+const ssri = require('ssri');
 
-const vendorsFile = fs.readFileSync(path.join(path.dirname(require.resolve('hexo-theme-next')), '_vendors.yml'));
+const vendorsFile = fs.readFileSync(
+  path.join(path.dirname(require.resolve('hexo-theme-next')), '_vendors.yml')
+);
 const dependencies = yaml.load(vendorsFile);
 
 const newPlugins = require('../package.json').dependencies;
@@ -39,17 +42,35 @@ function request(url) {
   });
 }
 
+async function checkIntegrity(url) {
+  const fileName = ".tmp";
+  const file = fs.createWriteStream(fileName);
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, function (response) {
+      response.pipe(file).on("close", function () {
+        ssri.fromStream(fs.createReadStream(fileName), { algorithms: ["sha256"] })
+            .then((sri) => { resolve(sri) });
+      });
+    });
+    req.on("error", function (error) {
+      fs.unlink(file);
+      reject(error.status);
+    });
+  });
+}
+
 async function format(name, links) {
   let content = '';
   for (const [key, value] of Object.entries(links)) {
     const url = 'https:' + value;
-    const result = await request(url);
-    content += `| ${key} | ${url} | ${result === 200 ? '✅ 200' : '❌ ' + result} |\n`;
+    const statusCode = await request(url);
+    const integrity = (statusCode === 200) ? await checkIntegrity(url) : '❌';
+    content += `| [${key}](${url}) | ${statusCode === 200 ? '✅ 200' : '❌ ' + statusCode} | ${integrity} |\n`;
   }
   return `
 ## ${name}
 
-| CDN Provider | CDN Link | Status |
+| CDN Provider | Status | Integrity |
 | - | - | - |
 ${content}`;
 }
