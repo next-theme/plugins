@@ -6,7 +6,9 @@ const { spawnSync } = require('child_process');
 const decache = require('decache');
 const ssri = require('ssri');
 
-const vendorsFile = fs.readFileSync(path.join(path.dirname(require.resolve('hexo-theme-next')), '_vendors.yml'));
+const vendorsFile = fs.readFileSync(
+  path.join(path.dirname(require.resolve('hexo-theme-next')), '_vendors.yml')
+);
 const dependencies = yaml.load(vendorsFile);
 
 const newPlugins = require('../package.json').dependencies;
