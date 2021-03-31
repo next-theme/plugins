@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@fancyapps/fancybox": "3.5.7",
-    "@fortawesome/fontawesome-free": "5.15.2",
+    "@fortawesome/fontawesome-free": "5.15.3",
     "@next-theme/pjax": "0.4.0",
     "algoliasearch": "4.8.6",
     "animate.css": "3.1.1",
