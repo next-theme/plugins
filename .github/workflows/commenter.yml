@@ -16,8 +16,6 @@ jobs:
     - run: npm install
     - run: node test/index.js > results.txt
     - name: comment PR
-      uses: machine-learning-apps/pr-comment@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: marocchino/sticky-pull-request-comment@v2
       with:
         path: results.txt
