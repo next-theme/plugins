@@ -78,7 +78,7 @@ ${content}`;
 async function main() {
   for (const [key, value] of Object.entries(dependencies)) {
     const { name, file, alias, unavailable } = value;
-    if (!diff.includes(name)) continue;
+    if (!diff.includes(name) || !file) continue;
     const version = newPlugins[name];
     const links = {
       jsdelivr: `//cdn.jsdelivr.net/npm/${name}@${version}/${file}`,

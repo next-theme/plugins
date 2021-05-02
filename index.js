@@ -1,7 +1,21 @@
 const { readFileSync, statSync, readdirSync } = require('fs');
-const { dirname, join } = require('path');
+const { dirname, join, relative } = require('path');
 
-function readFile(name, file) {
+function walk(dir, callback) {
+  readdirSync(dir).forEach(file => {
+    const filepath = join(dir, file);
+    const stats = statSync(filepath);
+    if (stats.isDirectory()) {
+      walk(filepath, callback);
+    } else if (stats.isFile()) {
+      callback(filepath);
+    }
+  });
+}
+
+function readFile(value) {
+  let { name, file, dir } = value;
+  if (!file) file = dir;
   const data = [];
   let base;
   try {
@@ -22,10 +36,10 @@ function readFile(name, file) {
     };
   }
   if (stats.isDirectory()) {
-    readdirSync(origin).forEach(path => {
+    walk(origin, path => {
       data.push({
-        path: join(dist, path),
-        data: readFileSync(join(origin, path))
+        path: join(dist, relative(origin, path)),
+        data: readFileSync(path)
       });
     });
   } else if (stats.isFile()) {
@@ -50,17 +64,8 @@ module.exports = function(hexo, vendors) {
     name: 'katex',
     file: 'dist/fonts'
   };
-  vendors.creativecommons_badges_big = {
-    name: '@creativecommons/vocabulary',
-    file: 'assets/license_badges/big'
-  };
-  vendors.creativecommons_badges_small = {
-    name: '@creativecommons/vocabulary',
-    file: 'assets/license_badges/small'
-  };
   for (const value of Object.values(vendors)) {
-    const { name, file } = value;
-    const { data, error } = readFile(name, file);
+    const { data, error } = readFile(value);
     if (data) generator = generator.concat(data);
     if (error) errors.push(error);
   }
