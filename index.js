@@ -50,6 +50,14 @@ module.exports = function(hexo, vendors) {
     name: 'katex',
     file: 'dist/fonts'
   };
+  vendors.creativecommons_badges_big = {
+    name: '@creativecommons/vocabulary',
+    file: 'assets/license_badges/big'
+  };
+  vendors.creativecommons_badges_small = {
+    name: '@creativecommons/vocabulary',
+    file: 'assets/license_badges/small'
+  };
   for (const value of Object.values(vendors)) {
     const { name, file } = value;
     const { data, error } = readFile(name, file);

@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@v2
     - run: npm install
     - run: node test/index.js > results.txt
-    - name: comment PR
+    - name: Comment PR
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         path: results.txt
