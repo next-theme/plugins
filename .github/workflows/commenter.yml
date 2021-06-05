@@ -15,9 +15,9 @@ jobs:
       uses: actions/setup-node@v2
     - run: npm install
     - run: |
-      git log
-      git show HEAD^:package.json
-      node test/index.js | tee -a results.txt
+        git log
+        git show HEAD^:package.json
+        node test/index.js | tee -a results.txt
     - name: Comment PR
       uses: marocchino/sticky-pull-request-comment@v2
       with:
