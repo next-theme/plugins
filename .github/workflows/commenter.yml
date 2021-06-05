@@ -11,12 +11,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - run: git log
-    - run: git show HEAD^:package.json
     - name: Use Node.js
       uses: actions/setup-node@v2
     - run: npm install
-    - run: node test/index.js | tee -a results.txt
+    - run: |
+      git log
+      git show HEAD^:package.json
+      node test/index.js | tee -a results.txt
     - name: Comment PR
       uses: marocchino/sticky-pull-request-comment@v2
       with:
