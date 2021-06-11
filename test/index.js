@@ -10,12 +10,8 @@ const vendorsFile = fs.readFileSync(
 );
 const dependencies = yaml.load(vendorsFile);
 
-function getPlugins(rev) {
-  return JSON.parse(spawnSync('git', ['show', `${rev}:package.json`]).stdout).dependencies;
-}
-
 const newPlugins = require('../package.json').dependencies;
-const oldPlugins = getPlugins('HEAD^');
+const oldPlugins = JSON.parse(spawnSync('curl', ['https://raw.githubusercontent.com/next-theme/plugins/master/package.json']).stdout).dependencies;
 
 const diff = [];
 Object.keys(newPlugins).forEach(key => {
