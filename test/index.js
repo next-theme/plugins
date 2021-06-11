@@ -3,7 +3,6 @@ const path = require('path');
 const https = require('https');
 const yaml = require('js-yaml');
 const { spawnSync } = require('child_process');
-const decache = require('decache');
 const ssri = require('ssri');
 
 const vendorsFile = fs.readFileSync(
@@ -12,9 +11,7 @@ const vendorsFile = fs.readFileSync(
 const dependencies = yaml.load(vendorsFile);
 
 const newPlugins = require('../package.json').dependencies;
-spawnSync('git', ['checkout', 'master']);
-decache('../package.json');
-const oldPlugins = require('../package.json').dependencies;
+const oldPlugins = JSON.parse(spawnSync('curl', ['https://raw.githubusercontent.com/next-theme/plugins/master/package.json']).stdout).dependencies;
 
 const diff = [];
 Object.keys(newPlugins).forEach(key => {
@@ -33,27 +30,22 @@ if (diff.length > 0) {
 
 function request(url) {
   return new Promise((resolve, reject) => {
-    const req = https.get(url, function(response) {
+    const req = https.get(url, response => {
       resolve(response.statusCode);
     });
-    req.on('error', function(error) {
+    req.on('error', error => {
       reject(error.status);
     });
   });
 }
 
 async function checkIntegrity(url) {
-  const fileName = ".tmp";
-  const file = fs.createWriteStream(fileName);
   return new Promise((resolve, reject) => {
-    const req = https.get(url, function (response) {
-      response.pipe(file).on("close", function () {
-        ssri.fromStream(fs.createReadStream(fileName), { algorithms: ["sha256"] })
-            .then((sri) => { resolve(sri) });
-      });
+    const req = https.get(url, response => {
+      ssri.fromStream(response, { algorithms: ['sha256'] })
+        .then(resolve);
     });
-    req.on("error", function (error) {
-      fs.unlink(file);
+    req.on('error', error => {
       reject(error.status);
     });
   });

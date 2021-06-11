@@ -38,7 +38,6 @@
     "ribbon.js": "1.0.2"
   },
   "devDependencies": {
-    "decache": "4.6.0",
     "hexo-theme-next": "8.5.0",
     "js-yaml": "4.1.0",
     "ssri": "8.0.1"
