@@ -11,7 +11,7 @@ const vendorsFile = fs.readFileSync(
 const dependencies = yaml.load(vendorsFile);
 
 const newPlugins = require('../package.json').dependencies;
-const oldPlugins = JSON.parse(spawnSync('curl', ['https://raw.githubusercontent.com/next-theme/plugins/master/package.json']).stdout).dependencies;
+const oldPlugins = JSON.parse(spawnSync('curl', ['https://raw.githubusercontent.com/next-theme/plugins/main/package.json']).stdout).dependencies;
 
 const diff = [];
 Object.keys(newPlugins).forEach(key => {

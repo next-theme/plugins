@@ -64,6 +64,10 @@ module.exports = function(hexo, vendors) {
     name: 'katex',
     file: 'dist/fonts'
   };
+  vendors.mathjax_font = {
+    name: 'mathjax',
+    file: 'es5/output/chtml/fonts'
+  };
   for (const value of Object.values(vendors)) {
     const { data, error } = readFile(value);
     if (data) generator = generator.concat(data);
