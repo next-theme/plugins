@@ -1,5 +1,5 @@
 const { readFileSync, statSync, readdirSync } = require('fs');
-const { dirname, join, relative } = require('path');
+const { join, relative } = require('path');
 
 function walk(dir, callback) {
   readdirSync(dir).forEach(file => {
@@ -13,13 +13,14 @@ function walk(dir, callback) {
   });
 }
 
-function readFile(value) {
+function readFile(plugin_dir, value) {
   let { name, file, dir } = value;
   if (!file) file = dir;
   const data = [];
-  let base;
+  const base = `${plugin_dir}/${name}`;
+  let stats;
   try {
-    base = dirname(require.resolve(`${name}/package.json`));
+    stats = statSync(base);
   } catch (err) {
     return {
       error: err.message
@@ -27,7 +28,6 @@ function readFile(value) {
   }
   const origin = `${base}/${file}`;
   const dist = `lib/${name}/${file}`;
-  let stats;
   try {
     stats = statSync(origin);
   } catch (err) {
@@ -69,7 +69,7 @@ module.exports = function(hexo, vendors) {
     file: 'es5/output/chtml/fonts'
   };
   for (const value of Object.values(vendors)) {
-    const { data, error } = readFile(value);
+    const { data, error } = readFile(hexo.plugin_dir, value);
     if (data) generator = generator.concat(data);
     if (error) errors.push(error);
   }
