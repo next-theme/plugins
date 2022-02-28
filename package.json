@@ -14,7 +14,7 @@
   "dependencies": {
     "@creativecommons/vocabulary": "2020.11.3",
     "@fancyapps/fancybox": "3.5.7",
-    "@fortawesome/fontawesome-free": "5.15.4",
+    "@fortawesome/fontawesome-free": "6.0.0",
     "@next-theme/pjax": "0.5.0",
     "algoliasearch": "4.12.1",
     "animate.css": "3.1.1",
