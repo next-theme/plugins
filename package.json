@@ -39,6 +39,7 @@
     "ribbon.js": "1.0.2"
   },
   "devDependencies": {
+    "css": "3.0.0",
     "hexo-theme-next": "next-theme/hexo-theme-next",
     "js-yaml": "4.1.0",
     "ssri": "8.0.1"
