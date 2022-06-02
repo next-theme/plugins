@@ -3,6 +3,9 @@
   "version": "8.12.1",
   "description": "Plugins for Hexo theme NexT.",
   "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "npm i && node lib/generator.js"
+  },
   "repository": "next-theme/plugins",
   "keywords": [
     "hexo",
