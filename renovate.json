@@ -1,5 +1,13 @@
 {
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "stabilityDays": 3
+    }
   ]
 }
