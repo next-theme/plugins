@@ -38,7 +38,7 @@
     "pdfobject": "2.2.8",
     "prism-themes": "1.9.0",
     "prismjs": "1.28.0",
-    "quicklink": "2.2.0",
+    "quicklink": "2.3.0",
     "ribbon.js": "1.0.2"
   },
   "devDependencies": {
