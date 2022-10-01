@@ -1,6 +1,6 @@
 {
   "name": "@next-theme/plugins",
-  "version": "8.13.0",
+  "version": "8.13.1",
   "description": "Plugins for Hexo theme NexT.",
   "main": "index.js",
   "scripts": {
