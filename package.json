@@ -18,7 +18,7 @@
     "@creativecommons/vocabulary": "2020.11.3",
     "@fancyapps/fancybox": "3.5.7",
     "@fortawesome/fontawesome-free": "6.2.1",
-    "@next-theme/pjax": "0.5.0",
+    "@next-theme/pjax": "0.6.0",
     "algoliasearch": "4.14.2",
     "animate.css": "3.1.1",
     "animejs": "3.2.1",
