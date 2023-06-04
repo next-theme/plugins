@@ -18,9 +18,8 @@ function readFile(plugin_dir, value) {
   if (!file) file = dir;
   const data = [];
   const base = `${plugin_dir}/${name}`;
-  let stats;
   try {
-    stats = statSync(base);
+    statSync(base);
   } catch (err) {
     return {
       error: err.message
@@ -28,6 +27,7 @@ function readFile(plugin_dir, value) {
   }
   const origin = `${base}/${file}`;
   const dist = `lib/${name}/${file}`;
+  let stats;
   try {
     stats = statSync(origin);
   } catch (err) {
