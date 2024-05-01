@@ -1,6 +1,6 @@
 {
   "name": "@next-theme/plugins",
-  "version": "8.19.2",
+  "version": "8.20.0",
   "description": "Plugins for Hexo theme NexT.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@creativecommons/vocabulary": "2020.11.3",
-    "@fancyapps/ui": "5.0.33",
+    "@fancyapps/ui": "5.0.31",
     "@fortawesome/fontawesome-free": "6.5.2",
     "@next-theme/pjax": "0.6.0",
     "algoliasearch": "4.23.3",
