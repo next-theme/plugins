@@ -25,6 +25,7 @@
     "disqusjs": "3.0.2",
     "firebase": "10.13.1",
     "gitalk": "1.8.0",
+    "twikoo": "1.6.36",
     "hexo-generator-searchdb": "1.4.1",
     "katex": "0.16.9",
     "lozad": "1.16.0",
