@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-node@v4
     - run: npm install
     - run: |
-        node lib/comment.js | tee -a results.txt
+        node lib/comment.js --diff | tee -a results.txt
     - name: Comment PR
       uses: marocchino/sticky-pull-request-comment@v2
       with:
