@@ -5,7 +5,7 @@
 [![Npm Downloads Total](https://img.shields.io/npm/dt/@next-theme/plugins?style=flat-square)](https://npmjs.org/package/@next-theme/plugins)
 [![License](https://img.shields.io/npm/l/@next-theme/plugins?style=flat-square)](https://npmjs.org/package/@next-theme/plugins)
 
-Plugins for Hexo theme NexT.
+This plugin provides the code for all optional third-party frontend libraries used by NexT. By default, NexT loads these libraries via CDN. However, in some cases, these CDNs may be unavailable (e.g., when the site is deployed in an intranet environment without internet access). In such situations, by installing this plugin and configuring the theme accordingly, Hexo can bundle the library code into the generated blog files, enabling offline deployment.
 
 ## Installation
 
