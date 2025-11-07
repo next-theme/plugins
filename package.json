@@ -44,6 +44,6 @@
     "css": "3.0.0",
     "hexo-theme-next": "next-theme/hexo-theme-next",
     "js-yaml": "4.1.0",
-    "ssri": "12.0.0"
+    "ssri": "13.0.0"
   }
 }
