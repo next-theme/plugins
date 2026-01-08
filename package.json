@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@creativecommons/vocabulary": "2020.11.3",
-    "@fancyapps/ui": "5.0.31",
+    "@fancyapps/ui": "6.1.7",
     "@fortawesome/fontawesome-free": "7.0.0",
     "@next-theme/pjax": "0.6.0",
     "algoliasearch": "5.36.0",
