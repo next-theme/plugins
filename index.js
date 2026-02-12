@@ -1,4 +1,5 @@
 const { readFileSync, statSync, readdirSync } = require('fs');
+const crypto = require('crypto');
 const { join, relative } = require('path');
 
 function walk(dir, callback) {
@@ -12,6 +13,17 @@ function walk(dir, callback) {
     }
   });
 }
+
+function calculateIntegrity(data) {
+  // Calculate SHA-256 hash and return in base64 format (SRI format)
+  const hash = crypto.createHash('sha256');
+  hash.update(data);
+  return 'sha256-' + hash.digest('base64');
+}
+
+// Store integrity hashes for files we process
+// This will be exported so the theme can access it
+const localIntegrityMap = {};
 
 function readFile(plugin_dir, value) {
   let { name, file, dir } = value;
@@ -37,23 +49,28 @@ function readFile(plugin_dir, value) {
   }
   if (stats.isDirectory()) {
     walk(origin, path => {
+      const fileData = readFileSync(path);
+      const dist_path = join(dist, relative(origin, path));
       data.push({
-        path: join(dist, relative(origin, path)),
-        data: readFileSync(path)
+        path: dist_path,
+        data: fileData
       });
+      localIntegrityMap[dist_path] = calculateIntegrity(fileData);
     });
   } else if (stats.isFile()) {
+    const fileData = readFileSync(origin);
     data.push({
       path: dist,
-      data: readFileSync(origin)
+      data: fileData
     });
+    localIntegrityMap[dist] = calculateIntegrity(fileData);
   }
   return {
     data
   };
 }
 
-module.exports = function(hexo, vendors) {
+function pluginMain(hexo, vendors) {
   let generator = [];
   let errors = [];
   vendors.fontawesome_font = {
@@ -82,4 +99,24 @@ module.exports = function(hexo, vendors) {
     hexo.log.warn('Maybe you can find the solution here: https://github.com/next-theme/plugins#debug');
   }
   hexo.extend.generator.register('next_vendors', () => generator);
+
+  // Register a helper to access local integrity hashes
+  hexo.extend.helper.register('next_vendor_integrity', function(path) {
+    // Normalize path to match our map keys
+    const normalizedPath = path.replace(/^\//, '');
+    return localIntegrityMap[normalizedPath];
+  });
+
+  // Log integrity hashes for debugging
+  hexo.log.info('[next-theme/plugins] Calculated integrity hashes for local files');
+  if (Object.keys(localIntegrityMap).length > 0) {
+    hexo.log.debug(`  Total files with integrity hashes: ${Object.keys(localIntegrityMap).length}`);
+  }
+}
+
+// Export both the main function and a method to get integrity hashes
+module.exports = pluginMain;
+module.exports.getLocalIntegrity = function(path) {
+  const normalizedPath = path.replace(/^\//, '');
+  return localIntegrityMap[normalizedPath];
 };
