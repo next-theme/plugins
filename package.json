@@ -6,10 +6,7 @@
   "scripts": {
     "prepublishOnly": "npm i && node lib/generator.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/next-theme/plugins.git"
-  },
+  "repository": "next-theme/plugins",
   "keywords": [
     "hexo",
     "hexo generator",
@@ -44,16 +41,8 @@
   },
   "devDependencies": {
     "css": "3.0.0",
-    "hexo-theme-next": "github:next-theme/hexo-theme-next",
+    "hexo-theme-next": "next-theme/hexo-theme-next",
     "js-yaml": "4.1.1",
     "ssri": "13.0.0"
-  },
-  "directories": {
-    "lib": "lib"
-  },
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/next-theme/plugins/issues"
-  },
-  "homepage": "https://github.com/next-theme/plugins#readme"
+  }
 }
