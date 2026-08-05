@@ -65,8 +65,20 @@ module.exports = function(hexo, vendors) {
     file: 'dist/fonts'
   };
   vendors.mathjax_font = {
+    name: '@mathjax/mathjax-newcm-font',
+    file: 'chtml'
+  };
+  vendors.mathjax_tex_extensions = {
     name: 'mathjax',
-    file: 'es5/output/chtml/fonts'
+    file: 'input/tex/extensions'
+  };
+  vendors.mathjax_mml_extensions = {
+    name: 'mathjax',
+    file: 'input/mml/extensions'
+  };
+  vendors.mathjax_sre = {
+    name: 'mathjax',
+    file: 'sre'
   };
   for (const value of Object.values(vendors)) {
     const { data, error } = readFile(hexo.plugin_dir, value);
