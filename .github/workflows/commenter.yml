@@ -15,7 +15,7 @@ jobs:
     - run: |
         node lib/comment.js --diff | tee -a results.txt
     - name: Comment PR
-      uses: marocchino/sticky-pull-request-comment@v2
+      uses: marocchino/sticky-pull-request-comment@v3.0.5
       with:
         path: results.txt
     - uses: actions/github-script@v9
