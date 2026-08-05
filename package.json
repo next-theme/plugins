@@ -6,7 +6,10 @@
   "scripts": {
     "prepublishOnly": "npm i && node lib/generator.js"
   },
-  "repository": "next-theme/plugins",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/next-theme/plugins.git"
+  },
   "keywords": [
     "hexo",
     "hexo generator",
@@ -18,6 +21,7 @@
     "@creativecommons/vocabulary": "2020.11.3",
     "@fancyapps/ui": "5.0.31",
     "@fortawesome/fontawesome-free": "7.0.0",
+    "@mathjax/mathjax-newcm-font": "4.1.3",
     "@next-theme/pjax": "0.6.0",
     "algoliasearch": "5.36.0",
     "animate.css": "3.1.1",
@@ -40,8 +44,16 @@
   },
   "devDependencies": {
     "css": "3.0.0",
-    "hexo-theme-next": "next-theme/hexo-theme-next",
+    "hexo-theme-next": "github:next-theme/hexo-theme-next",
     "js-yaml": "4.1.1",
     "ssri": "13.0.0"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/next-theme/plugins/issues"
+  },
+  "homepage": "https://github.com/next-theme/plugins#readme"
 }

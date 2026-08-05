@@ -72,9 +72,13 @@ module.exports = function(hexo, vendors) {
     name: 'mathjax',
     file: 'input/tex/extensions'
   };
-  vendors.mathjax_mml_extensions = {
+  vendors.mathjax_mml = {
     name: 'mathjax',
-    file: 'input/mml/extensions'
+    file: 'input/mml'
+  };
+  vendors.mathjax_a11y = {
+    name: 'mathjax',
+    file: 'a11y'
   };
   vendors.mathjax_sre = {
     name: 'mathjax',
