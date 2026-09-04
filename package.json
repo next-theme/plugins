@@ -37,7 +37,7 @@
     "prismjs": "1.30.0",
     "quicklink": "3.0.2",
     "ribbon.js": "1.0.2",
-    "wavedrom": "3.6.2"
+    "wavedrom": "3.7.0"
   },
   "devDependencies": {
     "css": "3.0.0",
